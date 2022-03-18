@@ -1,24 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oTw-zI-TYl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--물 마시기-->
+        <scene sceneID="dWT-cy-djM">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="0ir-6V-ebZ" customClass="AlertListViewController" customModule="DrinkWater" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="p5O-TY-cCG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sA1-uG-0JL">
+                                <rect key="frame" x="0.0" y="32" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sA1-uG-0JL" id="ItN-1v-tD5">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0ir-6V-ebZ" id="b4k-kF-0On"/>
+                            <outlet property="delegate" destination="0ir-6V-ebZ" id="wIB-lJ-YDM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="물 마시기" id="T0p-hR-zDV">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="7DC-nD-UK7">
+                            <connections>
+                                <action selector="addAlertButtonAction:" destination="0ir-6V-ebZ" id="5gF-Br-YbN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oU5-MW-j7F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-56" y="89"/>
+        </scene>
+        <!--Add Alert View Controller-->
+        <scene sceneID="xnV-Tc-lTx">
+            <objects>
+                <viewController storyboardIdentifier="AddAlertViewController" id="OIW-gs-GZ2" customClass="AddAlertViewController" customModule="DrinkWater" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q8i-B9-sPA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u01-Df-qZZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="알람추가" id="wKZ-DS-at5">
+                                        <barButtonItem key="leftBarButtonItem" title="취소" id="eKC-1s-DNb">
+                                            <connections>
+                                                <action selector="tapDismissButton:" destination="OIW-gs-GZ2" id="9PG-5e-dBn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="저장" id="0xB-PA-1Bd">
+                                            <connections>
+                                                <action selector="tapSaveButton:" destination="OIW-gs-GZ2" id="5a1-WO-UY9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irj-li-TEX">
+                                <rect key="frame" x="20" y="168" width="30" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="EBl-Am-qKD">
+                                <rect key="frame" x="201" y="153.5" width="193" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="193" id="6HI-C0-PHI"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="LZy-rM-eQk"/>
+                                    <constraint firstAttribute="width" constant="193" id="RfS-9K-URu"/>
+                                    <constraint firstAttribute="height" constant="50" id="ovb-ZL-Oqx"/>
+                                </constraints>
+                                <locale key="locale" localeIdentifier="ko_KR"/>
+                            </datePicker>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="689-w4-oJ1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u01-Df-qZZ" firstAttribute="top" secondItem="689-w4-oJ1" secondAttribute="top" id="Bhs-ZX-b6y"/>
+                            <constraint firstItem="u01-Df-qZZ" firstAttribute="leading" secondItem="689-w4-oJ1" secondAttribute="leading" id="H7Q-1K-3uh"/>
+                            <constraint firstItem="u01-Df-qZZ" firstAttribute="trailing" secondItem="689-w4-oJ1" secondAttribute="trailing" id="Lqc-r7-k9h"/>
+                            <constraint firstItem="EBl-Am-qKD" firstAttribute="centerY" secondItem="irj-li-TEX" secondAttribute="centerY" id="VFk-F0-B7m"/>
+                            <constraint firstItem="EBl-Am-qKD" firstAttribute="trailing" secondItem="689-w4-oJ1" secondAttribute="trailing" constant="-20" id="XN0-zM-0hM"/>
+                            <constraint firstItem="irj-li-TEX" firstAttribute="leading" secondItem="689-w4-oJ1" secondAttribute="leading" constant="20" id="d7p-XL-yiE"/>
+                            <constraint firstItem="irj-li-TEX" firstAttribute="top" secondItem="u01-Df-qZZ" secondAttribute="bottom" constant="80" id="vKJ-zz-ZrT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="EBl-Am-qKD" id="VGC-cp-RaE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mo7-U7-2UG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="87"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fYn-KE-6mL">
+            <objects>
+                <navigationController id="oTw-zI-TYl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="SqK-ma-pHf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0ir-6V-ebZ" kind="relationship" relationship="rootViewController" id="OTo-Vg-HAr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHm-7l-rPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-945" y="89"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
