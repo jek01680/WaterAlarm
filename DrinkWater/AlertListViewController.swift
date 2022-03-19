@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AlertListViewController: UITableViewController{
     var alerts: [Alert] = []
+    let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +26,7 @@ class AlertListViewController: UITableViewController{
     }
     
     @IBAction func addAlertButtonAction(_ sender: UIBarButtonItem) {
-        guard let addAlertVC = storyboard?.instantiateViewController(withIdentifier: "AddAlertViewController")
-                as? AddAlertViewController else { return }
+        guard let addAlertVC = storyboard?.instantiateViewController(withIdentifier: "AddAlertViewController") as? AddAlertViewController else { return }
         
         addAlertVC.pickedDate = { [weak self] date in
             guard let self = self else { return }
@@ -35,12 +36,14 @@ class AlertListViewController: UITableViewController{
             let newAlert = Alert(date: date, isOn: true)
             
             alertList.append(newAlert)
-            alertList.sort{ $0.date < $1.date }
+            alertList.sort { $0.date < $1.date }
             
             self.alerts = alertList
             
             //인코딩
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self.alerts), forKey: "alerts")
+            
+            self.userNotificationCenter.addNotificationRequest(by: newAlert)
             
             self.tableView.reloadData()
         }
@@ -67,21 +70,18 @@ extension AlertListViewController {
         switch section {
         case 0:
             return "🚰 물마실 시간"
-            
         default:
             return nil
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlertListCell", for: indexPath)
-                as? AlertListCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlertListCell", for: indexPath) as? AlertListCell else { return UITableViewCell() }
         
+        cell.alertSwitch.tag = indexPath.row
         cell.alertSwitch.isOn = alerts[indexPath.row].isOn
         cell.timeLabel.text = alerts[indexPath.row].time
         cell.meridiemLabel.text = alerts[indexPath.row].meridiem
-        
-        cell.alertSwitch.tag = indexPath.row
         
         return cell
     }
@@ -96,15 +96,13 @@ extension AlertListViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
-        case .delete :
-            //노티피케이션 삭제
+        case .delete:
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])
             self.alerts.remove(at: indexPath.row)
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self.alerts), forKey: "alerts")
-            self.tableView.reloadData()
-            return
-            
+            tableView.reloadData()
         default:
-            return
+            break
         }
     }
 }

@@ -17,6 +17,7 @@
 		32026C2D27E4D4530077060A /* AlertListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32026C2B27E4D4530077060A /* AlertListCell.xib */; };
 		32026C2F27E4D5B20077060A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32026C2E27E4D5B20077060A /* Alert.swift */; };
 		32026C3127E4D9130077060A /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32026C3027E4D9130077060A /* AddAlertViewController.swift */; };
+		328BEBA127E5F2AA00EA3793 /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BEBA027E5F2AA00EA3793 /* UNUserNotificationCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		32026C2B27E4D4530077060A /* AlertListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertListCell.xib; sourceTree = "<group>"; };
 		32026C2E27E4D5B20077060A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		32026C3027E4D9130077060A /* AddAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
+		328BEBA027E5F2AA00EA3793 /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +68,16 @@
 			children = (
 				32026C1427E4D34A0077060A /* AppDelegate.swift */,
 				32026C1627E4D34A0077060A /* SceneDelegate.swift */,
+				32026C2E27E4D5B20077060A /* Alert.swift */,
 				32026C2827E4D3680077060A /* AlertListViewController.swift */,
-				32026C1A27E4D34A0077060A /* Main.storyboard */,
 				32026C2A27E4D4530077060A /* AlertListCell.swift */,
+				328BEBA027E5F2AA00EA3793 /* UNUserNotificationCenter.swift */,
 				32026C2B27E4D4530077060A /* AlertListCell.xib */,
+				32026C3027E4D9130077060A /* AddAlertViewController.swift */,
+				32026C1A27E4D34A0077060A /* Main.storyboard */,
 				32026C1D27E4D34B0077060A /* Assets.xcassets */,
 				32026C1F27E4D34B0077060A /* LaunchScreen.storyboard */,
 				32026C2227E4D34B0077060A /* Info.plist */,
-				32026C2E27E4D5B20077060A /* Alert.swift */,
-				32026C3027E4D9130077060A /* AddAlertViewController.swift */,
 			);
 			path = DrinkWater;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			files = (
 				32026C1527E4D34A0077060A /* AppDelegate.swift in Sources */,
 				32026C1727E4D34A0077060A /* SceneDelegate.swift in Sources */,
+				328BEBA127E5F2AA00EA3793 /* UNUserNotificationCenter.swift in Sources */,
 				32026C2C27E4D4530077060A /* AlertListCell.swift in Sources */,
 				32026C2F27E4D5B20077060A /* Alert.swift in Sources */,
 				32026C2927E4D3680077060A /* AlertListViewController.swift in Sources */,

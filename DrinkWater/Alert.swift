@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-struct Alert: Codable{
+struct Alert: Codable {
     var id: String = UUID().uuidString
     let date: Date
     var isOn: Bool
@@ -19,9 +18,8 @@ struct Alert: Codable{
         return timeFormatter.string(from: date)
     }
     
-    var meridiem: String{
+    var meridiem: String {
         let meridiemFormatter = DateFormatter()
-        //a - 오전 오후 포맷
         meridiemFormatter.dateFormat = "a"
         meridiemFormatter.locale = Locale(identifier: "ko")
         return meridiemFormatter.string(from: date)
